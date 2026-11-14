@@ -29,7 +29,7 @@ a.sec{background:#1c2138;color:#c7cdf0}
     <div class="sub">You are invited to this Voice Room</div>
     <a class="btn" id="open" href="#">Open in Voice Room app</a>
     <a class="btn sec" id="get" href="/">Get the Voice Room app</a>
-    <div class="hint" id="hint">App irundhaa mela ulla button-ai thottaa room-kulla serum. Illai-na app-ai install panni, Join a room-la indha code-ai type pannunga: <b id="code2"></b></div>
+    <div class="hint" id="hint">Latest app-la mela ulla button-ai thottaa room-kulla serum (pazhaiya version-la direct open aagaadhu). App illai-na install panni, Join a room-la indha code-ai type pannunga: <b id="code2"></b></div>
   </div>
   <div id="bad" class="err" style="display:none">This invite link is not valid or the room has closed. Ask your friend to share a new invite.</div>
 </div>
@@ -46,7 +46,7 @@ a.sec{background:#1c2138;color:#c7cdf0}
     // receives the invite exactly as shared. The fragment never reaches this server.
     document.getElementById("open").href=location.href;
     if(/^#inv=[0-9a-f]{32}$/.test(location.hash||"")){
-      document.getElementById("hint").innerHTML="Idhu oru invite link - room active-aa irundhaa button-ai thottaa direct-aa join aagalaam (password room-aanaalum). App illai-na install panni indha code-ai manual-aa type pannunga: <b>"+room+"</b> (manual join-kku locked room password thevai).";
+      document.getElementById("hint").innerHTML="Idhu oru invite link - room active-aa irundhaa, latest app-la button-ai thottaa direct-aa join aagalaam (password room-aanaalum; pazhaiya version-la direct join illai). Manual-aa: app-la Join a room-la indha code-ai type pannunga: <b>"+room+"</b> (locked room-kku password thevai).";
     }
     fetch("/version.json").then(function(r){return r.json()}).then(function(j){if(j&&j.apk)document.getElementById("get").href=j.apk;}).catch(function(){});
   }else{
