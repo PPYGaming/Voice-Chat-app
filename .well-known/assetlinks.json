@@ -1,0 +1,15 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.ppy.voiceroom",
+    "sha256_cert_fingerprints": ["42:1A:EA:FF:5B:11:DC:0B:A3:5B:6A:2D:5C:41:AA:16:9E:02:3A:4F:5A:8E:94:70:23:11:FE:2F:58:4E:02:41"]
+  }
+},{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.ppy.vrbetatesting",
+    "sha256_cert_fingerprints": ["91:8E:A3:55:35:97:2B:0C:64:0A:26:1E:88:19:DB:5D:7D:3A:1D:30:10:92:D9:08:4A:71:BB:50:90:50:7B:99"]
+  }
+}]
