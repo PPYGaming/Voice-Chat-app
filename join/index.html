@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Voice Room - Room Invite</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Voice Room">
+<meta property="og:title" content="Join my Voice Room">
+<meta property="og:description" content="Tap to join this voice room in the Voice Room app by Tamil Crafters Studio.">
+<meta property="og:image" content="https://voiceroom.tamilcraftersstudio.in/vr-logo.png">
+<style>
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0B0D1A;color:#fff;font-family:system-ui,sans-serif;text-align:center;padding:24px;box-sizing:border-box}
+.card{max-width:420px;width:100%}
+img.logo{width:120px;height:120px;border-radius:26px}
+.code{font-size:40px;letter-spacing:6px;font-weight:800;margin:18px 0 4px;color:#8be9ff}
+.sub{color:#9aa3c0;font-size:14px;margin-bottom:22px}
+a.btn{display:block;background:#3b5bff;color:#fff;text-decoration:none;padding:14px;border-radius:12px;font-weight:700;margin:10px 0}
+a.sec{background:#1c2138;color:#c7cdf0}
+.hint{color:#6b7392;font-size:13px;margin-top:18px;line-height:1.5}
+.err{color:#ff7b8a;font-size:15px}
+</style>
+</head>
+<body>
+<div class="card">
+  <img class="logo" src="/vr-logo.png" alt="Voice Room logo">
+  <div id="ok" style="display:none">
+    <div class="code" id="code">------</div>
+    <div class="sub">You are invited to this Voice Room</div>
+    <a class="btn" id="open" href="#">Open in Voice Room app</a>
+    <a class="btn sec" id="get" href="/">Get the Voice Room app</a>
+    <div class="hint">App irundhaa mela ulla button-ai thottaa room-kulla serum. Illai-na app-ai install panni, Join a room-la indha code-ai type pannunga: <b id="code2"></b></div>
+  </div>
+  <div id="bad" class="err" style="display:none">This invite link is not valid. Ask your friend to share it again.</div>
+</div>
+<script>
+(function(){
+  var m=/^[A-Z0-9]{6}$/;
+  var room=null;
+  try{room=(new URLSearchParams(location.search).get("room")||"").toUpperCase();}catch(e){}
+  if(room&&m.test(room)){
+    document.getElementById("ok").style.display="block";
+    document.getElementById("code").textContent=room;
+    document.getElementById("code2").textContent=room;
+    document.getElementById("open").href="intent://voiceroom.tamilcraftersstudio.in/join?room="+room+"#Intent;scheme=https;package=com.ppy.voiceroom;end";
+    fetch("/version.json").then(function(r){return r.json()}).then(function(j){if(j&&j.apk)document.getElementById("get").href=j.apk;}).catch(function(){});
+  }else{
+    document.getElementById("bad").style.display="block";
+  }
+})();
+</script>
+</body>
+</html>
