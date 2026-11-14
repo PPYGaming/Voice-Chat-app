@@ -45,7 +45,7 @@ a.sec{background:#1c2138;color:#c7cdf0}
     // Keep the full URL (including the #inv= bearer token fragment) so the app
     // receives the invite exactly as shared. The fragment never reaches this server.
     document.getElementById("open").href=location.href;
-    if(/^#inv=[0-9a-f]{32}$/.test(location.hash||"")){
+    if(/^#inv=[0-9a-f]{32}(\.[0-9A-Za-z_-]{43})?$/.test(location.hash||"")){
       document.getElementById("hint").innerHTML="Idhu oru invite link - room active-aa irundhaa, latest app-la button-ai thottaa direct-aa join aagalaam (password room-aanaalum; pazhaiya version-la direct join illai). Manual-aa: app-la Join a room-la indha code-ai type pannunga: <b>"+room+"</b> (locked room-kku password thevai).";
     }
     fetch("/version.json").then(function(r){return r.json()}).then(function(j){if(j&&j.apk)document.getElementById("get").href=j.apk;}).catch(function(){});
